@@ -17,3 +17,7 @@
 
 # Ignore Secret file
 .secret
+
+.project
+.DS_Store
+.idea

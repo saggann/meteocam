@@ -1,9 +1,13 @@
 Meteocam::Application.routes.draw do
+  devise_for :users
+  get "statics/home"
+  get "statics/help"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'statics#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
