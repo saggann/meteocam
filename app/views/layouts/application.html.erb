@@ -1,20 +1,101 @@
-<!DOCTYPE html>
-<html>
+2<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+
+<html lang="en" class="no-js">
+	<!--<![endif]-->
+
 	<head>
-		<title>Meteocam</title>
+		<meta charset="utf-8"/>
+
+		<title>MeteoCam</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+		<meta content="" name="description"/>
+		<meta content="" name="author"/>
+		<meta name="MobileOptimized" content="320">
+
+		
 		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+				
+
 		<%= csrf_meta_tags %>
+
 	</head>
-	<body>
-		<p class="notice">
-			<%= notice %>
-		</p>
-		<p class="alert">
-			<%= alert %>
-		</p>
 
-		<%= yield %>
+	<body class="page-header-fixed">
+		<!-- BEGIN HEADER -->
 
+		<%= render 'layouts/header' %>
+
+		<!-- END HEADER -->
+		<div class="clearfix"></div>
+		<!-- BEGIN CONTAINER -->
+
+		<div class="page-container">
+
+			<!-- BEGIN SIDEBAR1 -->
+
+			<%= render 'layouts/sidebar' %>
+
+			<!-- END SIDEBAR1 -->
+
+			<!-- BEGIN CONTENT -->
+			<div class="page-content-wrapper">
+				<div class="page-content-wrapper">
+					<div class="page-content">
+
+						<div class="page-content-body">
+							<!-- HERE WILL BE LOADED AN AJAX CONTENT -->
+
+							<%= yield %>
+
+						</div>
+					</div>
+
+					<!-- BEGIN CONTENT -->
+					<div class="page-content-wrapper">
+						<div class="page-content-wrapper"></div>
+
+						<%= render 'layouts/footer' %>
+
+
+						<!-- BEGIN CORE PLUGINS -->
+						<!--[if lt IE 9]>
+						<script src="assets/plugins/respond.min.js"></script>
+						<script src="assets/plugins/excanvas.min.js"></script>
+						<![endif]-->
+
+						<script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+						
+						<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+						<script src="assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+						<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+
+						<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
+						<script src="assets/scripts/app.js"></script>
+
+
+						<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+						
+						<%= javascript_include_tag params[:controller] if Meteocam::Application.assets.find_asset("#{params[:controller]}.js") %>
+
+						<script>
+							jQuery(document).ready(function() {
+								App.init();
+								$('.page-sidebar .ajaxify.start').click() // load the content for the dashboard page.
+							});
+						</script>
 	</body>
+	<!-- END BODY -->
 </html>
+
