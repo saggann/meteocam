@@ -10,6 +10,14 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-1.10.2.min
+//= require jquery-migrate-1.2.1.min
+//= require jquery-ui-1.10.3.custom
+//= require bootstrap
+//= require jquery.slimscroll
+//= require jquery.blockui.min
+//= require jquery.cokie.min
+//= require jquery.uniform
+//= require conquer
 //= require jquery_ujs
 //= require turbolinks
