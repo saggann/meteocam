@@ -8,6 +8,18 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ * 
+ * 
+ *
+ *= require font-awesome
+ *= require bootstrap.min 
+ *= require uniform.default.min  
+ *= require style-conquer 
+ *= require style.css 
+ *= require style-responsive.css 
+ *= require plugins.css 
+ *= require themes/default.css 
+ *= require custom.css 
  *= require_self
  *= require_tree .
  */
