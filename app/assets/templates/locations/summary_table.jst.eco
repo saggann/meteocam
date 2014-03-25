@@ -1,0 +1,29 @@
+<table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2"> Location </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> Latitude </td>
+                                <td>  <%= @location.get('lat') %>  </td>
+
+                            </tr>
+
+                            <tr>
+                                <td> Longitude </td>
+                                <td>  <%= @location.get('lon') %>  </td>
+
+                            </tr>
+                            
+                            <tr>
+                                <td> Altitude </td>
+                                <td>  <%= @location.get('alt') %>  m </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    

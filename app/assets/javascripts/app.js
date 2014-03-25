@@ -10,6 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.flot
+//= require jquery.flot.time
+//= require jquery.flot.resize
+//= require jquery.flot.axislabels
 //= require underscore
 //= require backbone
 //= require meteocam

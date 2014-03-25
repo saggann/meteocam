@@ -1,0 +1,95 @@
+<div class="row">
+
+    <div class="col-md-4 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-camera"></i><%= @device.get('name') %> <span class="badge badge-success">online</span>
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive medium-portlet">
+
+                    <!------------------------------>
+                    <div id="weather-summary-table"></div>
+
+                    <!------------------------------>
+                    <div id="location-summary-table" ></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-camera"></i>Last shot : 23-03-2013
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <!------------------------------>
+                <div id="camera-image" class="medium-portlet"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-6 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-map-marker"></i>Weather History
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <!------------------------------>
+                <div id="weather-graph" class="chart medium-portlet">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-map-marker"></i>Localisation
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <!------------------------------>
+                <div id="devicemap" class="medium-portlet"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

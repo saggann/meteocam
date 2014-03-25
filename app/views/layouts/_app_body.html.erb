@@ -1,0 +1,75 @@
+<body class="page-header-fixed">
+
+	<%= render 'layouts/header' %>
+
+	<div class="clearfix"></div>
+
+	<div class="page-container">
+
+		<div class="page-sidebar navbar-collapse collapse" id="sidebar">
+			<!-- default sidebar, will be erased by app -->
+			<ul class="page-sidebar-menu">
+				<li class="sidebar-toggler-wrapper">
+					<div class="sidebar-toggler"></div>
+					<div class="clearfix"></div>
+				</li>
+
+				<li class="start ">
+					<a href=""> <i class="fa fa-home"></i> <span class="title">Dashboard</span></a>
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div class="page-content-wrapper">
+
+			<div class="page-content-wrapper">
+
+				<div class="page-content">
+
+					<div class="page-content-body">
+
+						<div class="row">
+							<div class="col-md-12">
+								<%= yield %>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="page-content-wrapper">
+
+					<div class="page-content-wrapper"></div>
+
+					<div class="footer">
+						<div class="footer-inner">
+							2013 - <%= Time.now.year %>   &copy; MeteoCam
+						</div>
+						<div class="footer-tools">
+							<span class="go-top"> <i class="fa fa-angle-up"></i> </span>
+						</div>
+					</div>
+
+					<!--[if lt IE 9]>
+					<script src="assets/plugins/respond.min.js"></script>
+					<script src="assets/plugins/excanvas.min.js"></script>
+					<![endif]-->
+
+					<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+					<script>
+						jQuery(document).ready(function() {
+							App.init();
+						});
+					</script>
+					
+					<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeSN3e1ceY-lOJdM1nveLR1wmu7iGzg9c&sensor=false"></script>
+					
+
+
+
+					<%= javascript_include_tag params[:controller] if Meteocam::Application.assets.find_asset("#{params[:controller]}.js") %>
+</body>

@@ -14,64 +14,35 @@
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-		<meta content="" name="description"/>
-		<meta content="" name="author"/>
 		<meta name="MobileOptimized" content="320">
 
 		
-		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-				
-
+		<%= stylesheet_link_tag    "application", media: "all"  %>
+		
+		
 		<%= csrf_meta_tags %>
 
 	</head>
 
-	<body class="page-header-fixed">
-
-		<%= render 'layouts/header' %>
-
-		<div class="clearfix"></div>
-
-		<div class="page-container">
 
 
-			<%= render 'layouts/sidebar' %>
+	<% if signed_in? %>
+
+		
+
+		<%= render 'layouts/app_body' %>
+		
+	
+
+	
+	
+	<%else%>
+		
+	
+		<%= render 'layouts/app_login' %>
 
 
-			<div class="page-content-wrapper">
-				<div class="page-content-wrapper">
-					<div class="page-content">
+	<%end%>
 
-						<div class="page-content-body">
-
-							<%= yield %>
-
-						</div>
-					</div>
-
-					<div class="page-content-wrapper">
-						<div class="page-content-wrapper"></div>
-
-						<%= render 'layouts/footer' %>
-
-
-						<!--[if lt IE 9]>
-						<script src="assets/plugins/respond.min.js"></script>
-						<script src="assets/plugins/excanvas.min.js"></script>
-						<![endif]-->
-
-
-
-						<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-						
-						<script>
-							jQuery(document).ready(function() {    
-							   App.init();
-							});
-						</script>
-
-						<%= javascript_include_tag params[:controller] if Meteocam::Application.assets.find_asset("#{params[:controller]}.js") %>
-
-	</body>
 </html>
 

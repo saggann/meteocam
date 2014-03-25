@@ -20,4 +20,4 @@
 //= require jquery.uniform
 //= require conquer
 //= require jquery_ujs
-//= require turbolinks
+

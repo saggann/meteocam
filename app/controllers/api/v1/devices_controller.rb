@@ -26,13 +26,15 @@ class Api::V1::DevicesController < ApplicationController
     @devices = Device.all
    end
    
+   
    def show
      
        @device = Device.find(params[:id])
-    
-    
+
        rescue ActiveRecord::RecordNotFound
-         render json: {:message => "Device not found", :code => 404}
+         
+         render json: {:message => "Device not found", :code => 404} , :status => :not_found
+         
          
   end
 

@@ -2,13 +2,8 @@ Meteocam::Application.routes.draw do
   
   
   # You can have the root of your site routed with "root"
-  root 'statics#home'
+  root 'app#start'
   
-  # Static help page
-  get "help", to: 'statics#help'
-  
-  # Web app page
-  get "app", to: 'app#start'
   
   # Create routes for devise
   devise_for :users
@@ -16,7 +11,10 @@ Meteocam::Application.routes.draw do
   
   namespace :api,  constraints: { format: 'json' } do
     namespace  :v1 do
-         resources :devices
+         resources :devices do
+           resources :weathers
+           
+         end
          #devise_scope :user do
          #match '/sessions' => 'sessions#create', :via => :post
          #match '/sessions' => 'sessions#destroy', :via => :delete

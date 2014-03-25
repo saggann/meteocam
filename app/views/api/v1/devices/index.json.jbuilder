@@ -1,5 +1,6 @@
-json.devices @devices do |device|
+json.array! @devices do |device|
 
-  json.extract! device, :id,  :uid
+ json.partial! 'device', device: device
 
 end
+

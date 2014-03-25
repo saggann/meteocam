@@ -827,8 +827,8 @@ var App = function () {
             handleResponsiveOnInit(); // handler responsive elements on page load
 
             //layout handlers
-            handleFixedSidebar(); // handles fixed sidebar menu
-            handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect 
+           handleFixedSidebar(); // handles fixed sidebar menu
+           handleFixedSidebarHoverable(); // handles fixed sidebar on hover effect 
             handleSidebarMenu(); // handles main menu
             handleQuickSearch(); // handles quick search
             handleSidebarToggler(); // handles sidebar hide/show            

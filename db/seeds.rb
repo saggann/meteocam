@@ -7,12 +7,38 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Device.delete_all
-Fix.delete_all
+Location.delete_all
 Weather.delete_all
+User.delete_all
+CameraPicture.delete_all
 
 
-dev =       Device.create(uid: "d74d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b68")
+user =       User.create!   :email => 'toto@toto.com', :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
 
-fix =       Fix.create( device_id: dev.id, timestamp: Time.now, longitude: -1.2514124, latitude: 45.015454, altitude: 80.00)
+dev1 =       Device.create  :name =>"Meteocam Ad Astra", :uid => "d74d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b68"
+dev2 =       Device.create  :name =>"Home Cam",          :uid => "d84d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b69"
 
-weather =   Weather.create( device_id: dev.id, timestamp: Time.now, temperature: 275.3, pressure: 10254.0)
+
+img = CameraPicture.create(device: dev1, timestamp: Time.now)
+img.image = (File.open(File.join(Rails.root, 'img.jpg')))
+img.save
+
+
+Location.create( device: dev1, timestamp: Time.now ,  longitude: -1.626256, latitude: 49.624381, altitude: 80.00)
+Location.create( device: dev2, timestamp: Time.now ,  longitude: -1.474019, latitude: 49.509269, altitude: 10.00)
+
+
+for i in 0..24
+
+   # creates a 24 hours history
+   t = Time.now - i.hour
+   
+   Weather.create( device: dev1, timestamp: t, temperature: 273.3 + Random.rand(20), pressure: 100000 + Random.rand(2000))
+ 
+   Weather.create( device: dev2, timestamp: t, temperature: 273.3 + Random.rand(20), pressure: 100000 + Random.rand(2000))  
+   
+end
+
+
+
+

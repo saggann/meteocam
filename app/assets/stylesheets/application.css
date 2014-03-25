@@ -10,7 +10,7 @@
  *
  * 
  * 
- *
+ * 
  *= require font-awesome
  *= require bootstrap.min 
  *= require uniform.default.min  
@@ -20,6 +20,18 @@
  *= require plugins.css 
  *= require themes/default.css 
  *= require custom.css 
+ *= require login 
  *= require_self
- *= require_tree .
  */
+
+
+
+.medium-portlet {
+	height:350px; 
+
+}
+
+.leaflet-map-pane img {
+  max-width: none;
+  max-height: none;
+}

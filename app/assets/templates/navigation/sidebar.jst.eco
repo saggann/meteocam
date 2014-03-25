@@ -1,0 +1,27 @@
+	<ul class="page-sidebar-menu">
+		<li class="sidebar-toggler-wrapper">
+			<div class="sidebar-toggler"></div>
+			<div class="clearfix"></div>
+		</li>
+
+		<li class="start" id="sidebar_dashboard">
+			<a href="#!dashboard"> <i class="fa fa-home"></i> <span class="title">Dashboard</span></a>
+		</li>
+
+
+		<li class="" id="sidebar_devices">
+					<a href="javascript:;">
+					<i class="fa fa-camera"></i>
+					<span class="title">
+						My Devices
+					</span>
+					<span class="arrow ">
+					</span>
+					</a>
+					<ul class="sub-menu" id="sidebar-devices-items">
+
+					</ul>
+				</li>
+
+
+	</ul>
