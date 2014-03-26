@@ -11,8 +11,13 @@ Meteocam::Application.routes.draw do
   
   namespace :api,  constraints: { format: 'json' } do
     namespace  :v1 do
+         
+         resource :sessions, only: [:create, :show, :destroy]
+         
          resources :devices do
-           resources :weathers
+           resources  :weathers
+           resources  :locations
+           resources  :camera_pictures
            
          end
          #devise_scope :user do

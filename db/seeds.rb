@@ -15,9 +15,9 @@ CameraPicture.delete_all
 
 user =       User.create!   :email => 'toto@toto.com', :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
 
-dev1 =       Device.create  :name =>"Meteocam Ad Astra", :uid => "d74d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b68"
-dev2 =       Device.create  :name =>"Home Cam",          :uid => "d84d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b69"
-
+dev1 =       Device.create  :name => "[dummy] Ad Astra", :uid => "d74d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b68"
+dev2 =       Device.create  :name => "Home Cam",         :uid => "d84d488752650f23e6394cdd8540325be42be9b87134e798ed7047e0df5c1b69"
+dev3=        Device.create  :name => "Prototype",        :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d27" 
 
 img = CameraPicture.create(device: dev1, timestamp: Time.now)
 img.image = (File.open(File.join(Rails.root, 'img.jpg')))

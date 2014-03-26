@@ -31,7 +31,7 @@ class Meteocam.Views.WeatherGraph extends Backbone.View
       series:
         lines:
           show: true
-          lineWidth: 2
+          lineWidth: 1
           fill: false
           fillColor:
             colors: [ 
@@ -40,7 +40,7 @@ class Meteocam.Views.WeatherGraph extends Backbone.View
             ]
     
         points:
-          show: true
+          show: false
     
     
       grid:
@@ -80,7 +80,7 @@ class Meteocam.Views.WeatherGraph extends Backbone.View
             axisLabel: "Pressure " + @pressure_unit
             axisLabelUseCanvas: true
             min : 900
-            max : 1100
+            max : 1080
           }
         ]
     )
