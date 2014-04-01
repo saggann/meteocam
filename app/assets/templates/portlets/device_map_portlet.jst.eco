@@ -1,0 +1,19 @@
+    <div class="col-md-6 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-map-marker"></i>Localisation
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                    <a href="javascript:;" class="reload"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <div id="devicemap" class="medium-portlet"></div>
+
+            </div>
+        </div>
+    </div>

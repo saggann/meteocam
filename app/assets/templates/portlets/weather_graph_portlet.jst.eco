@@ -1,0 +1,43 @@
+    <div class="col-md-6 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-map-marker"></i>Weather History
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                    <a href="javascript:;" class="reload"></a>
+                    
+                </div>
+                <div class="actions">
+
+               <div class="btn-group" data-toggle="buttons" id="weather-time-range">
+                   
+                                    <label class="btn btn-default btn-sm ">
+                                    <input type="radio" name="options" class="toggle">hour </label>
+                                    
+                                    <label class="btn btn-default btn-sm active">
+                                    <input type="radio" name="options" class="toggle">day </label>
+                                    
+                                    <label class="btn btn-default btn-sm">
+                                    <input type="radio" name="options" class="toggle">week </label>
+                                    
+                                    <label class="btn btn-default btn-sm ">
+                                    <input type="radio" name="options" class="toggle">month </label>
+                                
+              </div>
+
+
+                 </div>               
+                                
+            </div>
+            <div class="portlet-body" id="weather-graph-portlet-body">
+
+                <div id="weather-graph" class="chart medium-portlet">
+
+                </div>
+
+            </div>
+        </div>
+    </div>

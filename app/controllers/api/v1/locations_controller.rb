@@ -6,10 +6,17 @@ class Api::V1::LocationsController < ApplicationController
   before_filter :get_device
 
   skip_before_filter  :verify_authenticity_token
+  
   # Before all, get de right device
   def get_device
 
-    @device   = Device.find(params[:device_id])
+       # try to find with device id
+       @device   = Device.find_by id: params[:device_id]
+       
+       if !@device
+         @device = Device.find_by! uid: params[:device_id]
+       
+       end
 
   rescue ActiveRecord::RecordNotFound
     

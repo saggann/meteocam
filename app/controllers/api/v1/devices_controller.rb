@@ -29,7 +29,13 @@ class Api::V1::DevicesController < ApplicationController
    
    def show
      
-       @device = Device.find(params[:id])
+       # try to find with device id
+       @device   = Device.find_by id: params[:id]
+       
+       if !@device
+         @device = Device.find_by! uid: params[:id]
+       
+       end
 
        rescue ActiveRecord::RecordNotFound
          

@@ -11,8 +11,15 @@ class Api::V1::WeathersController < ApplicationController
   # Before all, get de right device
   def get_device
        
+       # try to find with device id
+       @device   = Device.find_by id: params[:device_id]
        
-       @device   = Device.find(params[:device_id])
+       if !@device
+         @device = Device.find_by! uid: params[:device_id]
+       
+       end
+       
+       # if not found, try device uid
        
        rescue ActiveRecord::RecordNotFound  
          render json: {:message => "Device not found", :code => 404} , :status => :not_found

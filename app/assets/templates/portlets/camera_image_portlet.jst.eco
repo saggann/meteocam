@@ -1,0 +1,25 @@
+    <div class="col-md-6 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-camera"></i>Last shot : 23-03-2013
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <div id="camera-image" class="medium-portlet">
+                   <img class="img-responsive center-block" src="<%= @img.get('medium_url') %>" /> 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+

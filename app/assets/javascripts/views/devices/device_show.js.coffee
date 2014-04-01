@@ -9,21 +9,22 @@ class Meteocam.Views.DeviceShow extends Backbone.View
   weathers = null
   
   initialize: ->
-    @on 'render', @renderSubViews
+    @on 'render', @renderPortlets
         
         
   render: ->
     
     # Create main view
-    $(@el).append(@template(device : @model))
+    $(@el).html(@template(device : @model))
     
 
     # Initialize subviews
-    @subv["img"] =   new Meteocam.Views.CameraImage(     model :  @model.getLastImage())
-    @subv["map"] =   new Meteocam.Views.LocateDeviceMap( model :  @model)
-    @subv["sum"] =   new Meteocam.Views.WeatherSummary(  model:   @model.getLastWeather() )
-    @subv["loc"] =   new Meteocam.Views.LocationSummary( model:   @model.getLastLocation() )
-    @subv["gra"] =   new Meteocam.Views.WeatherGraph( model: new Meteocam.Collections.Weathers() )
+    @subv["sum"] =   new Meteocam.Views.SummaryPortlet(  model:@model, weather: @model.getLastWeather() , location: @model.getLastLocation(), parent : $(@el))
+    @subv["img"] =   new Meteocam.Views.CameraImagePortlet(     model :   @model.getLastImage(),   parent : $(@el))
+    @subv["map"] =   new Meteocam.Views.DeviceMapPortlet( model :  @model,parent : $(@el))
+    
+    
+    @subv["gra"] =   new Meteocam.Views.WeatherGraph( model: new Meteocam.Collections.Weathers(), parent : $(@el))
     
 
     
@@ -36,27 +37,32 @@ class Meteocam.Views.DeviceShow extends Backbone.View
    "click #weather-time-range" : 'updateWeatheGraph'
   
     
-  renderSubViews: ->
+  renderPortlets: ->
     
-    @subv["img"].render()
-    @subv["map"].render()
     @subv["sum"].render()
-    @subv["loc"].render()
+    @subv["img"].render()
+    
+    @subv["gra"].render()
+    @subv["map"].render()
+    
+    
     @updateWeatheGraph()
          
   
   updateWeatheGraph: (ev) =>
     
-  
+    App.blockUI $("#weather-graph-portlet-body") , true
     
     @weathers = new Meteocam.Collections.Weathers(  @model) 
         
     if typeof ev != "undefined"
-      @weathers.setRange($("#weather-time-range .active").text().trim())
+      @weathers.setRange $(ev.target).text().trim()
+      
        
     @weathers.fetch success: =>
+      App.unblockUI $("#weather-graph-portlet-body") 
       @subv["gra"].model  =  @weathers
-      @subv["gra"].render()
+      @subv["gra"].renderGraph()
 
        
      

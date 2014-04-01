@@ -1,0 +1,82 @@
+    <div class="col-md-6 ">
+
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-camera"></i><%= @device.get('name') %> <span class="badge badge-success">online</span>
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"></a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive medium-portlet">
+
+                    <div id="weather-summary-table">
+                                            <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2"> Weather </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> Temperature </td>
+                                <td> <%= Math.floor( 100* (@weather.get("temp") - 273.15))/100 %> °C </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Pressure </td>
+                                <td> <%= @weather.get("pressure") / 100.0 %> hPa </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table> 
+                        
+                    </div>
+
+                    <div id="location-summary-table" >
+                        
+                        <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2"> Location </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> Latitude </td>
+                                <td>  <%= @location.get('lat') %>  </td>
+
+                            </tr>
+
+                            <tr>
+                                <td> Longitude </td>
+                                <td>  <%= @location.get('lon') %>  </td>
+
+                            </tr>
+                            
+                            <tr>
+                                <td> Altitude </td>
+                                <td>  <%= @location.get('alt') %>  m </td>
+
+                            </tr>
+
+                        </tbody>
+</table>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
