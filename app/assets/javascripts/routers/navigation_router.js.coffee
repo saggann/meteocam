@@ -27,6 +27,7 @@ class Meteocam.Routers.Navigation extends Backbone.Router
    getDevice: (id)->
       @clear()
       Meteocam.views.content = new Meteocam.Views.DeviceShow(model : Meteocam.collections.devices.get(id)).render()
+      Meteocam.views.content.delegateEvents()
   
    # Default page not found
    pageNotFound: ->

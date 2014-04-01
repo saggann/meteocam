@@ -34,6 +34,7 @@ gem "font-awesome-rails"
 gem "breadcrumbs_on_rails"
 
 gem "carrierwave"
+gem "fog"
 gem "mini_magick"
 
 

@@ -27,7 +27,6 @@ window.Meteocam =
     @views.sidebar.render()
     
     
-    
     # Fetch data
     @collections.devices.fetch 
                 reset:  true

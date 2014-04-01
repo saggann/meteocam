@@ -52,7 +52,12 @@ class Api::V1::WeathersController < ApplicationController
  
    
    def index
-     @weathers = @device.weathers.where(timestamp: (Time.now.midnight)..Time.now) 
+     if ['hour', 'day', 'week', 'month'].include?  params[:range]  
+       range = params[:range]
+      else
+        range = "day"
+     end
+     @weathers = @device.weathers.where(timestamp: (  1.send(range).ago)..Time.now) 
    end
    
    

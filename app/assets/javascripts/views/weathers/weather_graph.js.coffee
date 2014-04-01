@@ -2,16 +2,22 @@ class Meteocam.Views.WeatherGraph extends Backbone.View
 
   
   template:               JST['weathers/weather_graph']
-  el:                     "#weather-graph"
+  el:                         "#weather-graph"
   temp_unit : "°C"
   pressure_unit : "hPa"
+  
+  initialize: ->
+      @model.bind('reset', @render)
     
+
+  
   render: ->
     temp = []
     pressure = []
     
 
     for weather in @model.models
+      
       temp.push     [weather.get("time"), weather.get("temp") - 273.15]
       pressure.push [weather.get("time"), weather.get("pressure")/100.0]
      

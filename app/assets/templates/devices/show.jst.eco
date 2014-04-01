@@ -59,6 +59,27 @@
                 <div class="tools">
                     <a href="javascript:;" class="collapse"></a>
                 </div>
+                <div class="actions">
+
+               <div class="btn-group" data-toggle="buttons" id="weather-time-range">
+                   
+                                    <label class="btn btn-default btn-sm ">
+                                    <input type="radio" name="options" class="toggle">hour </label>
+                                    
+                                    <label class="btn btn-default btn-sm active">
+                                    <input type="radio" name="options" class="toggle">day </label>
+                                    
+                                    <label class="btn btn-default btn-sm">
+                                    <input type="radio" name="options" class="toggle">week </label>
+                                    
+                                    <label class="btn btn-default btn-sm ">
+                                    <input type="radio" name="options" class="toggle">month </label>
+                                
+              </div>
+
+
+                 </div>               
+                                
             </div>
             <div class="portlet-body">
 
