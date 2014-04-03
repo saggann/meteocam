@@ -3,47 +3,41 @@ class Api::V1::CameraPicturesController < ApplicationController
   respond_to :json
 
   before_filter :set_default_response_format
+
+  # User must be authenticated to access SHOW and INDEX method
+  before_filter :authenticate_user!,    :only => [:index, :show ]
+
+  # Device must be authenticated to access CREATE
+  before_filter :authenticate_device!,  :only =>[:create]
+
   before_filter :get_device
 
   skip_before_filter  :verify_authenticity_token
   
-  # Before all, get de right device
-  def get_device
+  
+   def new  
+    render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
+   end
+   
+   def update
+     render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
+   end
+   
+   def edit  
+     render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
+   end
+   
+   def destroy  
+     render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
+   end
 
-       # try to find with device id
-       @device   = Device.find_by id: params[:device_id]
-       
-       if !@device
-         @device = Device.find_by! uid: params[:device_id]
-       
-       end
-
-  rescue ActiveRecord::RecordNotFound
-    render json: {:message => "Device not found", :code => 404} , :status => :not_found
-
-    end
-
-
-  def new
-
-  end
-
-  def destroy
-
-  end
-
-  def update
-
-  end
-
-  def edit
-
-  end
-
+   
+  # List all pictures for current device
   def index
     @camera_pictures = @device.camera_pictures
   end
 
+  # Show picture for curent device
   def show
 
     @camera_picture =   @device.camera_pictures.find( params[:id])
@@ -53,6 +47,8 @@ class Api::V1::CameraPicturesController < ApplicationController
     render json: {:message => "Picture not found", :code => 404} , :status => :not_found
 
     end
+
+  # Create a picture
 
   def create
 
@@ -97,4 +93,19 @@ class Api::V1::CameraPicturesController < ApplicationController
     request.format = :json
   end
 
+  # Before all, get de right device
+  def get_device
+
+    # try to find with device id
+    @device   = Device.find_by id: params[:device_id]
+
+    if !@device
+      @device = Device.find_by! uid: params[:device_id]
+
+    end
+
+  rescue ActiveRecord::RecordNotFound
+    render json: {:message => "Device not found", :code => 404} , :status => :not_found
+
+    end
 end
