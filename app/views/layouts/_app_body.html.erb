@@ -69,7 +69,6 @@
 					<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeSN3e1ceY-lOJdM1nveLR1wmu7iGzg9c&sensor=false"></script>
 					
 
-
-
-					<%= javascript_include_tag params[:controller] if Meteocam::Application.assets.find_asset("#{params[:controller]}.js") %>
+					<%= javascript_include_tag "backbone_app" %>
+					
 </body>
