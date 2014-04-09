@@ -7,7 +7,7 @@ Meteocam::Application.routes.draw do
   devise_for :users
 
   # Do not create routes in app for devise devices
-  # devise_for :devices
+  devise_for :devices
   
   
 
@@ -16,8 +16,7 @@ Meteocam::Application.routes.draw do
     namespace  :v1 do
 
      
-     resource :sessions, only: [:create, :show, :destroy]
-
+     resource :sessions,        only: [:create, :show, :destroy]
 
       devise_scope :user  do
 

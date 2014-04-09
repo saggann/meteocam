@@ -15,7 +15,7 @@ CameraPicture.destroy_all
 
 user =       User.create!   :email => 'toto@toto.com',    :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
 
-dev3=        Device.create  :name =>  "Prototype",        :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d27" 
+dev3=        Device.create  :name =>  "Prototype",        :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d27" , :authentication_token =>"OK"
 
 
 

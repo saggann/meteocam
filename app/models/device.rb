@@ -2,7 +2,7 @@ class Device < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :trackable,:rememberable,
   devise :database_authenticatable, :registerable,
-          :validatable
+         :authentication_keys => [:uid]
          
   
   

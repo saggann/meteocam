@@ -3,9 +3,12 @@ class AddDeviseToDevices < ActiveRecord::Migration
     change_table(:devices) do |t|
       
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      #t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
+      ## Authentication token
+      t.string :authentication_token
+      
       ## Recoverable
       #t.string   :reset_password_token
       #t.datetime :reset_password_sent_at
@@ -37,8 +40,8 @@ class AddDeviseToDevices < ActiveRecord::Migration
       
     end
 
-    add_index :devices, :email,                unique: true
-    add_index :devices, :reset_password_token, unique: true
+    #add_index :devices, :email,                unique: true
+    #add_index :devices, :reset_password_token, unique: true
     
     # add_index :devices, :confirmation_token,   unique: true
     # add_index :devices, :unlock_token,         unique: true
