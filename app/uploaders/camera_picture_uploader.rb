@@ -7,11 +7,14 @@ class CameraPictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   
-  if Rails.env.production
-     storage :fog 
-  else 
+  if Rails.env.production? 
+     storage :fog
+  end
+  
+  if Rails.env.development?
     storage :file
   end
+
 
 
   # Override the directory where uploaded files will be stored.
