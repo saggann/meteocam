@@ -62,7 +62,7 @@ class Api::V1::LocationsController < ApplicationController
   def get_device
         
        # try to find with device id
-       @device   = Device.where("id = ? OR uid= ?", params[:device_id], params[:device_id]).take
+       @device   = Device.where("id = ? OR uid= ?", params[:device_id].to_i, params[:device_id]).take
      
                 
        rescue ActiveRecord::RecordNotFound

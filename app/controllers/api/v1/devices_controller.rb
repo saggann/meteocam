@@ -100,7 +100,7 @@ class Api::V1::DevicesController < ApplicationController
   def get_device( id_or_uid)
         
        # try to find with device id
-       @device   = Device.where("id = ? OR uid= ?", id_or_uid, id_or_uid).take
+       @device   = Device.where("id = ? OR uid= ?", id_or_uid.to_i, id_or_uid).take
      
                 
        rescue ActiveRecord::RecordNotFound

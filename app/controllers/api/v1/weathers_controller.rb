@@ -83,7 +83,7 @@ class Api::V1::WeathersController < ApplicationController
   def get_device
 
     # try to find with device id
-    @device   = Device.find_by id: params[:device_id]
+    @device   = Device.find_by id: params[:device_id].to_i
 
     if !@device
       @device = Device.find_by! uid: params[:device_id]
