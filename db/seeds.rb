@@ -14,7 +14,7 @@ dev1=        Device.create  :id=>1, :name =>  "Prototype",  :user=>user1,       
 
 dev2=        Device.create  :id=>2, :name =>  "Chalet Suisse",  :user=>user1,       :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d26" , :authentication_token =>"OK"
 
-loc = Location.create :device => dev2,  :latitude => 47.041595, :longitude => 8.786838, :altitude => 1800, :timestamp => DateTime.now
+loc = Location.create :device => dev2,  :latitude => 47.041595, :longitude => 8.786838, :altitude => 1129.36, :timestamp => DateTime.now
 dev2.location = loc
 dev2.save
 

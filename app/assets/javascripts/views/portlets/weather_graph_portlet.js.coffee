@@ -21,7 +21,7 @@ class Meteocam.Views.WeatherGraph extends Meteocam.Views.Portlet
     for weather in @model.models
       
       temp.push     [weather.get("time"), weather.get("temp") - 273.15]
-      pressure.push [weather.get("time"), weather.get("pressure")/100.0]
+      pressure.push [weather.get("time"), weather.get("pressure")]
      
     plot = $.plot($("#weather-graph"), [
       {

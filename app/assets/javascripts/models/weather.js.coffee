@@ -12,13 +12,13 @@ class Meteocam.Models.Weather extends Backbone.Model
   
    getTemperatureInCelsius: =>
      if @get("temp")
-       Math.floor( 100* (@get("temp") - 273.15))/100 + "°C "
+       Math.floor( 100* (@get("temp") - 273.15))/100 + " °C "
      else
        "No Data"
 
 
    getPressureInhPa: =>
      if @get("pressure")
-       @get('pressure')/100 + "hPa "
+       @get('pressure') + " hPa "
      else
        "No Data"

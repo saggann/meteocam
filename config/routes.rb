@@ -13,7 +13,7 @@ Meteocam::Application.routes.draw do
 
   namespace :api,  constraints: { format: 'json' } do
     
-    namespace  :v1 do
+    namespace  :v1  do
 
      
      resource :sessions,        only: [:create, :show, :destroy]
