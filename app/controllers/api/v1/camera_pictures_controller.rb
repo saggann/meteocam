@@ -90,7 +90,7 @@ class Api::V1::CameraPicturesController < ApplicationController
        id_or_uid = params[:device_id]
        
        # try to find with device id
-       @device   = Device.where("id = ? OR uid= ?", id_or_uid, id_or_uid).take
+       @device   = Device.where("id = ? OR uid= ?", id_or_uid.to_i, id_or_uid).take
      
                 
        rescue ActiveRecord::RecordNotFound
