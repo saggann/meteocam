@@ -23,13 +23,13 @@
                         <tbody>
                             <tr>
                                 <td> Temperature </td>
-                                <td> <%= Math.floor( 100* (@weather.get("temp") - 273.15))/100 %> °C </td>
+                                <td> <%=  @weather.getTemperatureInCelsius() %> </td>
 
                             </tr>
 
                             <tr>
                                 <td>Pressure </td>
-                                <td> <%= @weather.get("pressure") / 100.0 %> hPa </td>
+                                <td> <%= @weather.getPressureInhPa() %> </td>
 
                             </tr>
 

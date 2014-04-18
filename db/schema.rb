@@ -11,22 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403140758) do
+ActiveRecord::Schema.define(version: 20140415152310) do
 
   create_table "camera_pictures", force: true do |t|
     t.integer  "device_id"
     t.datetime "timestamp"
     t.string   "image"
+    t.string   "remote_picture_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "devices", force: true do |t|
-    t.string   "uid"
-    t.string   "name"
+    t.integer  "user_id"
+    t.boolean  "public",               default: false,     null: false
+    t.string   "uid",                                      null: false
+    t.string   "name",                 default: "unnamed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encrypted_password",   default: "", null: false
+    t.string   "encrypted_password",   default: "",        null: false
     t.string   "authentication_token"
     t.datetime "remember_created_at"
   end
@@ -43,9 +46,21 @@ ActiveRecord::Schema.define(version: 20140403140758) do
     t.datetime "updated_at"
   end
 
+  create_table "user_follow_devices", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "device_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_follow_devices", ["device_id"], name: "index_user_follow_devices_on_device_id"
+  add_index "user_follow_devices", ["user_id", "device_id"], name: "index_user_follow_devices_on_user_id_and_device_id", unique: true
+  add_index "user_follow_devices", ["user_id"], name: "index_user_follow_devices_on_user_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

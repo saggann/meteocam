@@ -13,6 +13,6 @@ class Meteocam.Collections.Weathers extends Backbone.Collection
     '/api/v1/devices/' + @device.id + '/weathers?range=' + @range
     
   setRange: (r) ->
-    @range = r if r in ["day", "hour", "week", "month"]
+    @range = r if r in ["hour", "day", "week", "month"]
   
   

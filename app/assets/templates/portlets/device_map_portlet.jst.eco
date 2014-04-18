@@ -3,7 +3,7 @@
         <div class="portlet">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-map-marker"></i>Localisation
+                    <i class="fa fa-map-marker"></i> Last update : <%=  new Date(@location.get('time')).toLocaleString() %>
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"></a>

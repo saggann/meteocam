@@ -4,24 +4,48 @@ class Device < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :authentication_keys => [:uid]
          
+  # Followers
+  has_many :user_follow_devices, :dependent => :destroy
+  has_many :followers,           :through   => :user_follow_devices, 
+                                 :source    => :user
+
   
+  # Owner
+  belongs_to  :user
+  validates   :user_id, :presence => true
   
-  has_many :locations
-  has_many :weathers
-  has_many :camera_pictures
+  # Device Location
+  has_one  :location,     dependent: :destroy
   
-  def last_location
-    locations.last
-  end
+  # Device pictures
+  has_one :camera_picture, dependent: :destroy
+  
+  # Device weathers
+  has_many :weathers,      dependent: :destroy
   
 
+  # Device unique id
+  validates :uid,     :presence => true
+  
+
+  # Get last weather update
   def last_weather
     weathers.last
   end  
   
   
-  def last_picture
-    camera_pictures.last
+  
+  
+  
+  # User get read access to device ( owner or public device)
+  def get_read_access( u)
+    
+    return (u == self.user) || (self.public)
+        
+     
   end
+    
+
+
   
 end

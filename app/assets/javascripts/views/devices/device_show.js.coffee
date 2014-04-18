@@ -20,8 +20,10 @@ class Meteocam.Views.DeviceShow extends Backbone.View
 
     # Initialize subviews
     @subv["sum"] =   new Meteocam.Views.SummaryPortlet(  model:@model, weather: @model.getLastWeather() , location: @model.getLastLocation(), parent : $(@el))
+    
     @subv["img"] =   new Meteocam.Views.CameraImagePortlet(     model :   @model.getLastImage(),   parent : $(@el))
-    @subv["map"] =   new Meteocam.Views.DeviceMapPortlet( model :  @model,parent : $(@el))
+    
+    @subv["map"] =   new Meteocam.Views.DeviceMapPortlet( model :  @model ,parent : $(@el))
     
     
     @subv["gra"] =   new Meteocam.Views.WeatherGraph( model: new Meteocam.Collections.Weathers(), parent : $(@el))

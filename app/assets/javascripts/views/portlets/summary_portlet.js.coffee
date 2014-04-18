@@ -5,6 +5,7 @@ class Meteocam.Views.SummaryPortlet extends Meteocam.Views.Portlet
 
   
   render: ->
+
     @parent.append(@template(device:@model, weather : @weather, location: @location))
     this
     

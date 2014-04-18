@@ -4,8 +4,10 @@ class CreateCameraPictures < ActiveRecord::Migration
       
       t.integer   :device_id
       t.datetime  :timestamp
+      
       t.string    :image
-
+      t.string    :remote_picture_url
+      
       t.timestamps
       
     end

@@ -20,11 +20,21 @@ Meteocam::Application.routes.draw do
 
       devise_scope :user  do
 
+        
         resources :devices do
-
+          
+          collection do 
+            get :following
+          end
+          
           resources  :weathers,        :only=>[ :show, :index]
-          resources  :locations,       :only=>[ :show, :index]
-          resources  :camera_pictures, :only=>[ :show, :index]
+          
+          get  :location
+          get  :camera_picture
+          
+         # resources  :locations,       :only=>[ :show, :index]
+         # resources  :camera_pictures, :only=>[ :show, :index]
+          
 
         end
 

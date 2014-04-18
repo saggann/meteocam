@@ -4,9 +4,6 @@ class Api::V1::CameraPicturesController < ApplicationController
 
   before_filter :set_default_response_format
 
-  # User must be authenticated to access SHOW and INDEX method
-  before_filter :authenticate_user!,    :only => [:index, :show ]
-
   # Device must be authenticated to access CREATE
   before_filter :authenticate_device!,  :only =>[:create]
 
@@ -31,22 +28,13 @@ class Api::V1::CameraPicturesController < ApplicationController
      render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
    end
 
-   
-  # List all pictures for current device
   def index
-    @camera_pictures = @device.camera_pictures
+    render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
   end
 
-  # Show picture for curent device
   def show
-
-    @camera_picture =   @device.camera_pictures.find( params[:id])
-
-  rescue ActiveRecord::RecordNotFound
-
-    render json: {:message => "Picture not found", :code => 404} , :status => :not_found
-
-    end
+    render json: {:message => "Method not allowed", :code => 405} , :status =>    :method_not_allowed
+   end
 
   # Create a picture
 
@@ -74,14 +62,15 @@ class Api::V1::CameraPicturesController < ApplicationController
 
     @camera_picture = CameraPicture.create(device: @device, timestamp: Time.now)
     @camera_picture.image = params[:picture][:picture_path]
+    @device.camera_picture = @camera_picture
 
-    if @camera_picture.save
+    if @device.save
 
-      render "show"
+       render json: {:message => "Picture saved", :code => 201} , :status => :created
 
     else
 
-      render json: {:message => "Can't create camera picture" + @camera_picture.errors , :code => 422} , :status => :unprocessable_entity
+      render json: {:message => "Can't create camera picture" + @device.errors , :code => 422} , :status => :unprocessable_entity
 
     end
 
@@ -94,18 +83,20 @@ class Api::V1::CameraPicturesController < ApplicationController
   end
 
   # Before all, get de right device
+  
+  # Try to get device from its id or uid. Render json error if not found
   def get_device
-
-    # try to find with device id
-    @device   = Device.find_by id: params[:device_id]
-
-    if !@device
-      @device = Device.find_by! uid: params[:device_id]
-
-    end
-
-  rescue ActiveRecord::RecordNotFound
-    render json: {:message => "Device not found", :code => 404} , :status => :not_found
-
-    end
+       
+       id_or_uid = params[:device_id]
+       
+       # try to find with device id
+       @device   = Device.where("id = ? OR uid= ?", id_or_uid, id_or_uid).take
+     
+                
+       rescue ActiveRecord::RecordNotFound
+          render json: {:message => "Device not found", :code => 404} , :status => :not_found
+          return false
+    
+  end
+  
 end

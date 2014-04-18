@@ -3,7 +3,7 @@
         <div class="portlet">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-camera"></i>Last shot : 23-03-2013
+                    <i class="fa fa-camera"></i>Last shot : <%=  new Date(@img.get('time')).toLocaleString() %>
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"></a>
@@ -12,7 +12,7 @@
             <div class="portlet-body">
 
                 <div id="camera-image" class="medium-portlet">
-                   <img class="img-responsive center-block" src="<%= @img.get('medium_url') %>" /> 
+                   <img class="img-responsive center-block" src="<%= @img.get_image() %>" /> 
                 </div>
 
             </div>

@@ -4,6 +4,7 @@ class CreateLocations < ActiveRecord::Migration
       
       t.integer :device_id
       t.datetime :timestamp
+      
       t.float :longitude
       t.float :latitude
       t.float :altitude

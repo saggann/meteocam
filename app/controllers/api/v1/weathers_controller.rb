@@ -41,7 +41,7 @@ class Api::V1::WeathersController < ApplicationController
     @weather  = Weather.create(device: @device, timestamp: Time.now, temperature: params["temp"], pressure: params["pressure"] )
 
     if @weather.save
-      render 'show'
+     render json: {:message => "Weather created", :code => 201} , :status => :created
     else
       render json: {:message => "Can't create weather", :code => 422} , :status => :unprocessable_entity
     end
