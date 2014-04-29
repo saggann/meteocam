@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
+gem 'omniauth-twitter'
 
 gem "backbone-on-rails"
 

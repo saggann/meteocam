@@ -1,3 +1,5 @@
+require 'omniauth-twitter'
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -253,4 +255,7 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  
+  config.omniauth :twitter,  "3Cfy4zJzdruqOM6aXxiorLjHT", "Foe8yf3tGzoT46s7cCVqe37QIoPGs3lgN63P6T7xHgV1qdu8DW"
+
 end
