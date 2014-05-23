@@ -2,13 +2,19 @@
 				
 				<%= devise_error_messages! %>
 				
-				
-				<%= link_to image_tag("/img/sign-in-with-twitter-gray.png", :border => 0), user_omniauth_authorize_path(:twitter) %>
-				
+				<h3 class="form-title">Sign in with social media</h3>
 				
 				
+				<%= link_to image_tag("/img/sign-in-with-twitter.png",   :class=> "social-login"  ),      user_omniauth_authorize_path(:twitter) %>
 				
-				<h3 class="form-title">Login to your account</h3>
+				<%= link_to image_tag("/img/sign-in-with-facebook.png",   :class=> "social-login" ),     user_omniauth_authorize_path(:facebook) %>
+				
+
+    			we will never post anything without permission
+		
+				
+			
+				<h3 class="form-title">or sign in via email</h3>
 
 				<div class="form-group">
 					<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
@@ -25,6 +31,7 @@
 						<%= f.password_field :password, autocomplete: "off", placeholder: "Password" , :class=>"form-control placeholder-no-fix" %>
 					</div>
 				</div>
+				
 				<div class="form-actions">
  
 
@@ -33,17 +40,20 @@
 					<i class="fa fa-sign-in "></i> Login
 					<% end %>
 
-					
+				
 				</div>
-				<div class="forget-password">
-					<h4>Closed beta</h4>
-					<p>
-						Please contact admin for beta test account.
-					</p>
+				
+				
+				<div class="create-account">
+			<p>
+				 Want to register via email adress  ?&nbsp; <%= link_to( "Sign up now", new_user_registration_path) %>
+			</p>
+		</div>
+		
 					
-					
-					
-				</div>
+				
+				
+				
 
 <% end %>
 

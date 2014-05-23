@@ -12,6 +12,9 @@ Meteocam::Application.routes.draw do
   devise_for :devices
   
   
+  get '/users/:id/add_email' => 'users#add_email', via: [:get, :patch, :post], :as => :add_user_email
+
+
 
   namespace :api,  constraints: { format: 'json' } do
     

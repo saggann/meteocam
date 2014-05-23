@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429135108) do
+ActiveRecord::Schema.define(version: 20140415152310) do
 
   create_table "camera_pictures", force: true do |t|
     t.integer  "device_id"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20140429135108) do
     t.string   "about"
     t.string   "image"
     t.string   "email"
+    t.string   "provider"
+    t.string   "uid"
     t.string   "username",               default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -74,8 +76,6 @@ ActiveRecord::Schema.define(version: 20140429135108) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

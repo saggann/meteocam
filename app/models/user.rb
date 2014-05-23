@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [ :twitter],
+         :omniauthable, :omniauth_providers => [ :twitter, :facebook],
          :authentication_keys => [:login]
 
   validates :username,
@@ -56,13 +56,26 @@ class User < ActiveRecord::Base
 
   def self.find_for_twitter_oauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
+      pp auth
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = auth.info.email
+      user.email = "change@me.org"
+      user.username = auth.info.nickname
       user.password = Devise.friendly_token[0,20]
     end
   end
 
+  def self.find_for_facebook_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.username = auth.info.nickname
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
+  
+  
   def following?(device)
     user_follow_devices.find_by(device_id: device.id)
   end
