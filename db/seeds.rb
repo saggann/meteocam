@@ -8,7 +8,7 @@ User.destroy_all
 CameraPicture.destroy_all
 
 
-user1 =       User.create!  :id=>1,  :email => 'toto@toto.com',    :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
+user1 =      User.create!  :id=>1,  :username =>'toto', :email => 'toto@toto.com',    :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
 
 dev1=        Device.create  :id=>1, :name =>  "Prototype",  :user=>user1,       :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d27" , :authentication_token =>"OK"
 
@@ -24,7 +24,8 @@ img = CameraPicture.create :device => dev2, :timestamp => DateTime.now, :remote_
 img.save
 dev2.save
 
-user2 =       User.create!  :id=>2,  :email => 'tata@tata.com',    :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
+
+user2 =       User.create!  :id=>2,  :username =>'tata', :email => 'tata@tata.com',    :password => 'xxxxxxxx', :password_confirmation => 'xxxxxxxx'
 
 dev3=         Device.create  :id=>3, :name =>  "Prototype 3 is public and followed",  :public => true,  :user=>user2,       :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d28" , :authentication_token =>"OK"
 dev4=         Device.create  :id=>4, :name =>  "Prototype 4 is public",               :public => true,  :user=>user2,       :uid => "dcce27c124e309b9a22c753e70cf48d8aca2c1dd101e4131d3f40d29" , :authentication_token =>"OK"

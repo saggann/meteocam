@@ -4,7 +4,9 @@ Meteocam::Application.routes.draw do
   root 'app#start'
 
   # Create routes for devise
-  devise_for :users
+  devise_for :users, 
+      
+      :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # Do not create routes in app for devise devices
   devise_for :devices

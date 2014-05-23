@@ -1,22 +1,27 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-			<form class="login-form" action="index.html" method="post">
+				
+				<%= devise_error_messages! %>
+				
+				
+				<%= link_to image_tag("/img/sign-in-with-twitter-gray.png", :border => 0), user_omniauth_authorize_path(:twitter) %>
+				
+				
+				
+				
 				<h3 class="form-title">Login to your account</h3>
-				<div class="alert alert-error display-hide">
-					<button class="close" data-close="alert"></button>
-					<span> Enter any username and password. </span>
-				</div>
+
 				<div class="form-group">
 					<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-					<%= f.label :email, :class=>"control-label visible-ie8 visible-ie9" %>
+					<%= f.label :login, :class=>"control-label visible-ie8 visible-ie9" %>
 					<div class="input-icon">
 						<i class="fa fa-user"></i>
-						<%= f.email_field :email, autofocus: true, autocomplete:"off", placeholder:"Username or Email", :class=>"form-control placeholder-no-fix"  %>
+						<%= f.text_field :login, autofocus: true, autocomplete:"off", placeholder:"Username or Email", :class=>"form-control placeholder-no-fix"  %>
 					</div>
 				</div>
 				<div class="form-group">
 					<%= f.label :password, :class=>"control-label visible-ie8 visible-ie9" %>
 					<div class="input-icon">
-						<i class="fa fa-lock"></i>
+						<i class="fa fa-lock" ></i>
 						<%= f.password_field :password, autocomplete: "off", placeholder: "Password" , :class=>"form-control placeholder-no-fix" %>
 					</div>
 				</div>
@@ -27,10 +32,7 @@
 					<%= button_tag(type: 'submit', class: "btn btn-info pull-right") do %>
 					<i class="fa fa-sign-in "></i> Login
 					<% end %>
-				
-				
-					
-				
+
 					
 				</div>
 				<div class="forget-password">
@@ -39,10 +41,9 @@
 						Please contact admin for beta test account.
 					</p>
 					
-					<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+					
 					
 				</div>
 
-			</form>
 <% end %>
 

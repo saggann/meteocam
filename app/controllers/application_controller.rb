@@ -10,11 +10,24 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_device_from_token!
 
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password_confirmation, :password) }
+  end
+  
+  
+  
   private
   
   def record_not_found(error)
     render :json => {:error => error.message}, :status => :not_found
   end
+
 
   def authenticate_device_from_token!
 
